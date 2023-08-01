@@ -1,0 +1,101 @@
+
+<!-- saved from url=(0223)https://makeviraltrends.com/pixel3.php?time=1674043796&clientId=1669005774829_51a219d61215248e1ddbfeb6d103beb218f356c9e590ef44fb44121b464995&origin_length=0&origin={}&ref=https://getbootstrap.com/docs/5.3/examples/sign-in/? -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="refresh" content="400">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+</head><body>
+
+<script>
+var domain = 'makeviraltrends.com';
+var time = Date.now();
+if(window.location.host != domain) {
+    window.location.href = "https://" + domain + "/pixel3.php" + window.location.search;
+}
+
+setTimeout(function() {
+	try {
+		document.getElementById("player").remove();
+	} catch(ex){}
+	window.location.reload();
+}, 300*1000);
+</script>
+<script> var videoId = ''; el = ''; oid = ''; autoplay = 0; cc = '1';</script><script>
+//createFrame(videoId, el, autoplay, cc, "player");
+
+var finalUrl = ""
+var setInfo = 0
+
+function getCookie(name){
+    var pattern = RegExp(name + "=.[^;]*")
+    var matched = document.cookie.match(pattern)
+    if(matched){
+        var cookie = matched[0].split('=')
+        return cookie[1]
+    }
+    return false
+}
+
+
+function sendInfo() {
+        if (setInfo != 0) {
+            return;
+        }
+
+        setInfo = 1
+        notify_url("https://ultimateadb.com/logging.php?clientId=" + getCookie("clientId") + "&url=" + encodeURIComponent(finalUrl));
+}
+
+function notify_url(url) {
+        var url = url;
+        var img  = new Image();
+        img.src = url;
+        return false;
+}
+
+function find_frame(e) {
+        var iframes = document.getElementsByTagName('iframe');
+        for(var i = 0; i < iframes.length; i++) {
+            if( e.source === iframes[i].contentWindow) {
+                return iframes[i];
+            }
+        }
+
+}
+
+
+
+window.addEventListener('message', function(event) {
+    try {
+        var json = JSON.parse(event.data)
+        if (json.type == 'info') {
+                finalUrl = json.message
+                find_frame(event).remove()      
+                sendInfo()                      
+            }
+        } catch(ex) {
+                console.log(ex)
+        }
+    }
+);
+
+/*
+try {
+        fetch("https://ultimateadb.com/check_logs.php?clientId=" + getCookie("clientId")).then(function(response) {
+            return response.json();
+        }).then(function(jsonResponse) {
+            if (jsonResponse.vid) {
+			 createFrame(jsonResponse.vid, el, autoplay, 1, "player1");
+		  }
+        });
+} catch (ex) {
+	console.log(ex)
+}
+ */
+
+setTimeout(function() {
+//	var request = new XMLHttpRequest();
+//	request.open("GET", "update.php?videoId=" + videoId + "&oid=" + oid);
+//	request.send();
+}, 15*1000);
+</script>
+</body></html>
